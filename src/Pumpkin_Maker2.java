@@ -137,9 +137,17 @@ class DrawingPanel2 extends JPanel
 		}
 		else if(txtEye.equalsIgnoreCase("T"))//Triangel Eye //FINISH
 		{
-			System.out.println("If T");
+			int newX = (pumpX+(pumpWidth/4));
+			int newY = (pumpY+(pumpHeight/5));
+			int newXX = (pumpX+pumpWidth-(pumpWidth/3));
+			int newYY = (pumpY+(pumpHeight/5));
+			int[] pumpCordX = {(newX+(pumpWidth/10)), newX, (newX+((pumpWidth/10)/2))};
+			int[] pumpCordY = {(newY+(pumpHeight/10)), (newY+(pumpHeight/10)), newY};
+			int[] pumpCordXX = {(newXX+(pumpWidth/10)), newXX, (newXX+((pumpWidth/10)/2))};
+			int[] pumpCordYY = {(newYY+(pumpHeight/10)), (newYY+(pumpHeight/10)), newYY};
 			g.setColor(Color.WHITE);
-			g.fillOval((pumpX + (pumpWidth/2)-(pumpWidth/20)), (pumpY-(pumpHeight/10)), (pumpWidth/10), (pumpHeight/10));
+			g.fillPolygon(pumpCordX, pumpCordY, 3);
+			g.fillPolygon(pumpCordXX, pumpCordYY, 3);
 		}
 		else
 		{
@@ -167,8 +175,12 @@ class DrawingPanel2 extends JPanel
 		}
 		else if(txtNose.equalsIgnoreCase("T"))//FINISH
 		{
+			int newX = (pumpX + (pumpWidth/2)-5);
+			int newY = (pumpY + (pumpHeight/2)-5);
+			int[] pumpCordX = {(newX+(pumpWidth/10)), newX, (newX+((pumpWidth/10)/2))};
+			int[] pumpCordY = {(newY+(pumpHeight/10)), (newY+(pumpHeight/10)), newY};
 			g.setColor(Color.WHITE);
-			g.fillOval((pumpX + (pumpWidth/2)-5), (pumpY + (pumpHeight/2)-5), (pumpWidth/10), (pumpHeight/10));
+			g.fillPolygon(pumpCordX, pumpCordY, 3);
 		}
 		else
 		{
@@ -329,10 +341,12 @@ class MyCustomFrame2 extends JFrame
     	if(setString.length() == 0)
     	{
     		JOptionPane.showMessageDialog(null, "You can't leave the " + name + " field blank");
+    		setSize = 100;
     	}
     	else if(setSize == -1)
     	{
     		JOptionPane.showMessageDialog(null, "The " + name + " must be an Integer");
+    		setSize = 100;
     	}
     	else
     	{
@@ -367,10 +381,31 @@ class MyCustomFrame2 extends JFrame
     	}
 		else if(stringCheck = false)
 		{
-			JOptionPane.showMessageDialog(null, "The " + name + " must be a String");
+			JOptionPane.showMessageDialog(null, name + " must be a String");
 		}
     	else
     	{
+    		if(name.equalsIgnoreCase("Eye"))
+    		{
+    			if(!setString.equalsIgnoreCase("C") & !setString.equalsIgnoreCase("S") & !setString.equalsIgnoreCase("T"))
+    			{
+    				JOptionPane.showMessageDialog(null, setString + " is not an option for Eye (C, S, T)");
+    			}
+    		}
+    		else if(name.equalsIgnoreCase("Nose"))
+    		{
+    			if(!setString.equalsIgnoreCase("C") & !setString.equalsIgnoreCase("S") & !setString.equalsIgnoreCase("T"))
+    			{
+    				JOptionPane.showMessageDialog(null, setString + " is not an option for Nose (C, S, T)");
+    			}
+    		}
+    		else if(name.equalsIgnoreCase("Mouth"))
+    		{
+    			if(!setString.equalsIgnoreCase("C") & !setString.equalsIgnoreCase("S") & !setString.equalsIgnoreCase("T"))
+    			{
+    				JOptionPane.showMessageDialog(null, setString + " is not an option for mouth (O, R)");
+    			}
+    		}
     		return setString;
     	}
 		return setString;
