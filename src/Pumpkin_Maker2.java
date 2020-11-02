@@ -197,6 +197,7 @@ class DrawingPanel2 extends JPanel
 	{
 		if(txtMouth.equalsIgnoreCase("O"))
 		{
+			//Cords are wrong for all mouth lines
 			g.setColor(Color.WHITE);
 			g.fillOval((pumpX+(pumpWidth/2)-(pumpWidth/6)), (pumpY+(pumpWidth/2)+(pumpWidth/5)), (pumpWidth/3), (pumpHeight/10));
 			//x,y,w,h
@@ -401,7 +402,7 @@ class MyCustomFrame2 extends JFrame
     		}
     		else if(name.equalsIgnoreCase("Mouth"))
     		{
-    			if(!setString.equalsIgnoreCase("C") & !setString.equalsIgnoreCase("S") & !setString.equalsIgnoreCase("T"))
+    			if(!setString.equalsIgnoreCase("R") & !setString.equalsIgnoreCase("O"))
     			{
     				JOptionPane.showMessageDialog(null, setString + " is not an option for mouth (O, R)");
     			}
